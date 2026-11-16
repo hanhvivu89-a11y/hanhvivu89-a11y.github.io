@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hanhsecondlife | Thiết kế lại cuộc đời sau khủng hoảng</title>
+  <meta name="description" content="Hạnh Nguyễn (Thạc sĩ TCNH FTU, 10 năm NHNN) — Đồng hành cùng phụ nữ 28–45 tuổi tái thiết tài chính, phục hồi năng lượng và xây dựng sự nghiệp thứ 2 có nền tảng.">
+
+  <!-- Google Fonts: Libre Baskerville + Playfair Display + Poppins (Chuẩn Another Linh Beacons) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --beacons-slate: #5b7483;
+      --beacons-navy: #063d5b;
+      --beacons-white: #FEFEFE;
+      --beacons-dark: #101010;
+    }
+
+    body {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--beacons-white);
+      margin: 0;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      background-color: #4a606d;
+    }
+
+    /* Blurred Ambient Portrait Backdrop (Giống hệt khung ngoài của beacons.ai/anotherlinh) */
+    .ambient-backdrop {
+      position: fixed;
+      inset: -40px;
+      background-image: 
+        linear-gradient(180deg, rgba(135, 168, 188, 0.45) 0%, rgba(91, 116, 131, 0.55) 55%, rgba(168, 152, 138, 0.65) 100%),
+        url('hanh-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(42px) brightness(1.04);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Khung chính trung tâm 720px màu #5b7483 chuẩn Beacons */
+    .beacons-container {
+      max-width: 720px;
+      margin: 28px auto 60px auto;
+      background: linear-gradient(#5b7483, #5b7483);
+      border-radius: 24px;
+      padding: 36px 22px 84px 22px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+    }
+
+    @media (max-width: 740px) {
+      .beacons-container {
+        margin: 0 auto;
+        border-radius: 0;
+        padding: 24px 16px 72px 16px;
+      }
+    }
+
+    .font-handle {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+
+    .font-editorial {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* Hiệu ứng fade chân dung hòa vào nền #5b7483 */
+    .portrait-fade {
+      background: linear-gradient(180deg, rgba(91, 116, 131, 0) 50%, rgba(91, 116, 131, 0.78) 82%, #5b7483 100%);
+    }
+
+    /* Card Featured viền trắng 2px chuẩn Another Linh */
+    .featured-banner-card {
+      border: 2px solid #FEFEFE;
+      border-radius: 17px;
+      overflow: hidden;
+      transition: transform 0.28s ease;
+    }
+    .featured-banner-card:hover {
+      transform: scale(1.012);
+    }
+
+    /* Gift & Funnel Store Cards màu #063d5b chuẩn Another Linh */
+    .navy-gift-card {
+      background-color: #063d5b;
+      border-radius: 17px;
+      padding: 22px;
+      transition: transform 0.25s ease;
+    }
+    .navy-gift-card:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Nút bấm Pill trắng sứ #FEFEFE chữ đen #101010 chuẩn Another Linh */
+    .white-pill-btn {
+      background-color: #FEFEFE;
+      color: #101010;
+      border-radius: 17px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .white-pill-btn:hover {
+      background-color: #f3efe6;
+      transform: scale(1.015);
+    }
+
+    /* Nút bấm viền trắng trong khung Facebook */
+    .outline-pill-btn {
+      background-color: rgba(6, 61, 91, 0.75);
+      color: #FEFEFE;
+      border: 1.5px solid #FEFEFE;
+      border-radius: 17px;
+      font-family: 'Playfair Display', Georgia, serif;
+      transition: all 0.2s ease;
+    }
+    .outline-pill-btn:hover {
+      background-color: #FEFEFE;
+      color: #101010;
+    }
+
+    /* Ô nhập liệu nền #063d5b viền trắng 2px chuẩn Another Linh */
+    .navy-pill-input {
+      background-color: #063d5b;
+      border: 2px solid #FEFEFE;
+      border-radius: 17px;
+      color: #FEFEFE;
+      font-family: 'Playfair Display', Georgia, serif;
+      padding: 13px 20px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+    .navy-pill-input::placeholder {
+      color: rgba(254, 254, 254, 0.62);
+    }
+    .navy-pill-input:focus {
+      background-color: #08496d;
+    }
+
+    /* Thẻ minh họa bên phải từng Card (Tone giấy kem ấm & Terracotta nghệ thuật) */
+    .editorial-thumb {
+      border-radius: 17px;
+      background: linear-gradient(145deg, #F5ECE0 0%, #E8D5BC 65%, #D5B895 100%);
+      color: #3E2C1C;
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nền mờ nghệ thuật bên ngoài -->
+  <div id="ambientBackdrop" class="ambient-backdrop"></div>
+
+  <!-- KHUNG BEACONS CHÍNH (#5b7483) -->
+  <main class="beacons-container">
+
+    <!-- ================= 1. HERO PORTRAIT & HANDLE ================= -->
+    <section class="flex flex-col items-center text-center">
+      <div class="relative w-full max-w-[370px] h-[450px] rounded-[20px] overflow-hidden shadow-lg">
+        <img id="heroPortraitImg" src="hanh-hero.jpg" alt="Hạnh Nguyễn - Hạnh Second Life"
+             onerror="this.src='https://ui-avatars.com/api/?name=Hanh+Nguyen&background=063d5b&color=FEFEFE&size=512'"
+             class="w-full h-full object-cover object-center">
+        <!-- Lớp phủ hòa vào nền #5b7483 -->
+        <div class="absolute inset-0 portrait-fade flex flex-col justify-end items-center pb-3 px-4 pointer-events-none">
+          <h1 class="font-handle text-[34px] sm:text-[42px] font-bold text-[#FEFEFE] tracking-tight leading-none drop-shadow">
+            hanhsecondlife
+          </h1>
+        </div>
+      </div>
+
+      <!-- Social Icons Tối Giản Trắng Sứ -->
+      <div class="flex items-center justify-center gap-5 mt-3 text-[#FEFEFE]">
+        <a href="https://www.facebook.com/profile.php?id=61596368464266" target="_blank" rel="noopener" class="hover:opacity-75 transition" title="Fanpage Hạnh Second Life">
+          <i data-lucide="facebook" class="w-6 h-6 stroke-[1.8]"></i>
+        </a>
+        <a href="https://www.youtube.com/@hanhsecondlife" target="_blank" rel="noopener" class="hover:opacity-75 transition" title="YouTube Hạnh Second Life">
+          <i data-lucide="youtube" class="w-6 h-6 stroke-[1.8]"></i>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="hover:opacity-75 transition" title="Instagram Hạnh Second Life">
+          <i data-lucide="instagram" class="w-6 h-6 stroke-[1.8]"></i>
+        </a>
+        <a href="https://zalo.me/0911328128" target="_blank" rel="noopener" class="hover:opacity-75 transition" title="Zalo 0911.328.128">
+          <i data-lucide="message-circle" class="w-6 h-6 stroke-[1.8]"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= 2. FEATURED FACEBOOK CARD (VIỀN TRẮNG 2PX + ĐỦ 3 LINK FACEBOOK) ================= -->
+    <section class="mt-8 max-w-[620px] mx-auto">
+      <div class="text-center mb-3">
+        <h2 class="text-lg sm:text-xl font-bold text-[#FEFEFE]">Ghé Facebook mình ở đây</h2>
+        <p class="text-sm sm:text-base text-[#FEFEFE]/90 mt-0.5">Ấn vô nút dưới này ⇩</p>
+      </div>
+
+      <div class="featured-banner-card relative w-full">
+        <img id="bannerPortraitImg" src="hanh-nguyen.jpg" alt="Hạnh Second Life Banner" class="absolute inset-0 w-full h-full object-cover object-center brightness-[0.48]">
+        <div class="relative z-10 bg-gradient-to-t from-[#063d5b]/90 via-[#063d5b]/55 to-black/35 flex flex-col items-center justify-center text-center px-5 py-7 sm:px-8 sm:py-8">
+          <h3 class="text-xl sm:text-2xl font-bold text-[#FEFEFE] drop-shadow">
+            Hạnh Second Life
+          </h3>
+          <p class="text-xs sm:text-sm text-[#FEFEFE] mt-2.5 leading-relaxed max-w-lg drop-shadow">
+            Thạc sĩ Tài chính FTU &bull; 10 năm Ngân hàng Nhà nước.<br>
+            Đi qua biến cố 5 tỷ tuổi 34 & trầm cảm sau sinh, đứng dậy bằng cách quay về bên trong thấu hiểu bản thân mình và kỷ luật tự học.<br>
+            Đồng hành cùng bạn xây lại một cuộc đời mới có nền tảng.
+          </p>
+
+          <!-- 3 Đường link Facebook theo đúng hệ sinh thái của chị Hạnh -->
+          <div class="w-full max-w-md mt-5 space-y-2.5">
+            <a href="https://www.facebook.com/profile.php?id=61596368464266" target="_blank" rel="noopener"
+               class="white-pill-btn block w-full py-2.5 px-4 text-xs sm:text-sm font-semibold shadow">
+              1. Fanpage Hạnh Second Life (Tài chính & Sự nghiệp thứ 2)
+            </a>
+            <a href="https://www.facebook.com/ByHanhNguyen89" target="_blank" rel="noopener"
+               class="outline-pill-btn block w-full py-2.5 px-4 text-xs sm:text-sm font-medium">
+              2. FB Hạnh Nguyễn (Đại sứ Giáo dục và mẹ mentor - nuôi con tầm nhìn 30 năm)
+            </a>
+            <a href="https://www.facebook.com/hanhnguyen89official" target="_blank" rel="noopener"
+               class="outline-pill-btn block w-full py-2.5 px-4 text-xs sm:text-sm font-medium">
+              3. FB Hanh Nguyen (chăm sóc bản thân, tâm hồn và đam mê xê dịch)
+            </a>
+          </div>
+
+          <button type="button" onclick="openModal('modalStory')" class="mt-3.5 text-xs underline text-[#FEFEFE]/90 hover:text-white">
+            Đọc trọn vẹn câu chuyện của Hạnh tại đây &rarr;
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. QUÀ TẶNG VÀ LỘ TRÌNH TÁI THIẾT TỪ MÌNH (ĐÃ BỎ CÁC Ô NHỎ) ================= -->
+    <section class="mt-9 max-w-[620px] mx-auto space-y-4">
+      <div class="text-center mb-3">
+        <h2 class="text-lg sm:text-xl font-bold text-[#FEFEFE]">Quà tặng và lộ trình tái thiết từ mình</h2>
+      </div>
+
+      <!-- CARD 1 (TẦNG 2 - LEAD MAGNET CHỦ LỰC ĐẦU PHỄU) -->
+      <div class="navy-gift-card grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+        <div class="sm:col-span-7 flex flex-col justify-between h-full space-y-4">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-[#FEFEFE] leading-snug">
+              [Guidebook] Bản đồ Tái thiết 30 ngày: Tiền & Năng lượng
+            </h3>
+            <p class="text-xs sm:text-sm text-[#FEFEFE]/90 mt-2 leading-relaxed">
+              Gửi tặng bạn kế hoạch sống lại được sau khủng hoảng: Bảng chụp nhanh tài chính, phân loại nợ và 4 điểm neo phục hồi năng lượng nhé
+            </p>
+          </div>
+          <div>
+            <button type="button" onclick="scrollToLeadForm('Bản đồ Tái thiết 30 ngày')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
+              Nhận quà
+            </button>
+          </div>
+        </div>
+        <!-- Minh họa nghệ thuật bên phải giống hệt mẫu Another Linh -->
+        <div onclick="openModal('modalReadMap')" class="sm:col-span-5 cursor-pointer editorial-thumb h-[195px] sm:h-[215px] p-5 flex flex-col justify-between shadow-inner">
+          <div class="w-12 h-12 rounded-full bg-[#B56543]/15 border border-[#B56543]/30 flex items-center justify-center text-[#9E4F2E]">
+            <i data-lucide="compass" class="w-6 h-6"></i>
+          </div>
+          <div class="my-auto text-center">
+            <p class="text-[11px] uppercase tracking-widest text-[#7A583B]">Hạnh Second Life</p>
+            <h4 class="font-editorial text-lg font-bold text-[#3A2615] leading-snug mt-1">
+              Bản đồ Tái thiết<br>trong 30 ngày
+            </h4>
+          </div>
+          <div class="h-3 w-full rounded-full bg-gradient-to-r from-[#C87D55]/40 via-[#9E4F2E]/60 to-[#5b7483]/40"></div>
+        </div>
+      </div>
+
+      <!-- CARD 2 (BÀI TỰ ĐÁNH GIÁ 60 GIÂY) -->
+      <div class="navy-gift-card grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+        <div class="sm:col-span-7 flex flex-col justify-between h-full space-y-4">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-[#FEFEFE] leading-snug">
+              [Bài tự đánh giá] Bạn đang ở tầng nào của khủng hoảng?
+            </h3>
+            <p class="text-xs sm:text-sm text-[#FEFEFE]/90 mt-2 leading-relaxed">
+              Trắc nghiệm 60 giây giúp bạn biết chính xác mình cần Cấp cứu dòng tiền, Tái cấu trúc hay Xây sự nghiệp thứ 2
+            </p>
+          </div>
+          <div>
+            <button type="button" onclick="openModal('modalQuiz')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
+              Làm bài đánh giá
+            </button>
+          </div>
+        </div>
+        <div onclick="openModal('modalQuiz')" class="sm:col-span-5 cursor-pointer rounded-[17px] bg-[#FAF6F0] text-[#3A2E25] h-[195px] sm:h-[215px] p-5 flex flex-col justify-between relative overflow-hidden">
+          <div class="flex items-center gap-2">
+            <span class="text-3xl font-bold text-[#6E5641]">3</span>
+            <span class="text-xs font-bold leading-tight text-[#523F30]">Tầng Chẩn Đoán<br>& Lộ Trình</span>
+          </div>
+          <div class="space-y-1.5 text-[11px] text-[#523F30]">
+            <div class="p-1.5 rounded bg-[#EAE0D2]/70">1. Cấp cứu dòng tiền & Hồi sức</div>
+            <div class="p-1.5 rounded bg-[#EAE0D2]/70">2. Tái cấu trúc Tháp 4 tầng</div>
+            <div class="p-1.5 rounded bg-[#EAE0D2]/70">3. Thiết kế Sự nghiệp thứ 2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 (TẦNG 4 - BỘ CÔNG CỤ TÁI THIẾT TÀI CHÍNH GIA ĐÌNH) -->
+      <div class="navy-gift-card grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+        <div class="sm:col-span-7 flex flex-col justify-between h-full space-y-4">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-[#FEFEFE] leading-snug">
+              [Template & Workbook] Bộ công cụ Tái thiết Tài chính Gia đình
+            </h3>
+            <p class="text-xs sm:text-sm text-[#FEFEFE]/90 mt-2 leading-relaxed">
+              Trọn bộ Workbook 90 ngày, Bảng dòng tiền gia đình theo quy tắc 4 Tầng phòng thủ và Bản đồ xử lý nợ
+            </p>
+          </div>
+          <div>
+            <button type="button" onclick="openModal('modalToolkit')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
+              Xem bộ công cụ
+            </button>
+          </div>
+        </div>
+        <div onclick="openModal('modalToolkit')" class="sm:col-span-5 cursor-pointer rounded-[17px] bg-[#F7F3EB] text-[#3A2E25] h-[195px] sm:h-[215px] p-5 flex flex-col justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-3xl font-bold text-[#063d5b]">4</span>
+            <span class="text-xs font-bold leading-tight text-[#063d5b]">Tầng Phòng Thủ<br>Tài Sản Gia Đình</span>
+          </div>
+          <p class="text-xs italic text-[#5C4E41] leading-relaxed">
+            "An toàn tài chính trước khi nghĩ đến làm giàu."
+          </p>
+          <span class="text-[11px] font-semibold text-[#9E4F2E]">Workbook + File Bảng Tính &rarr;</span>
+        </div>
+      </div>
+
+      <!-- CARD 4 (TẦNG 5 & 6 - WORKSHOP LÀM LẠI TỪ SỐ ÂM & REBUILD 90) -->
+      <div class="navy-gift-card grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+        <div class="sm:col-span-7 flex flex-col justify-between h-full space-y-4">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-[#FEFEFE] leading-snug">
+              [Workshop & Rebuild 90] Làm lại từ số âm trong 90 ngày
+            </h3>
+            <p class="text-xs sm:text-sm text-[#FEFEFE]/90 mt-2 leading-relaxed">
+              Chương trình đồng hành thiết kế lại bản đồ tiền, lịch phục hồi năng lượng và hướng thu nhập mới sau tuổi 35
+            </p>
+          </div>
+          <div>
+            <button type="button" onclick="openModal('modalRebuild90')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
+              Tìm hiểu lộ trình
+            </button>
+          </div>
+        </div>
+        <div onclick="openModal('modalRebuild90')" class="sm:col-span-5 cursor-pointer editorial-thumb h-[195px] sm:h-[215px] p-5 flex flex-col justify-between">
+          <span class="text-[11px] uppercase tracking-widest text-[#7A583B] font-semibold">Mentoring Group</span>
+          <div class="my-auto">
+            <h4 class="text-xl font-bold text-[#3A2615]">Rebuild 90</h4>
+            <p class="text-xs text-[#5C4328] mt-1">Tái thiết Tiền, Năng lượng & Sự nghiệp thứ 2</p>
+          </div>
+          <span class="text-[11px] underline text-[#3A2615]">Xem 3 kết quả cam kết &rarr;</span>
+        </div>
+      </div>
+
+      <!-- CARD 5 (ĐẠI SỨ GIÁO DỤC - TẦM NHÌN 30 NĂM CHO CON) -->
+      <div class="navy-gift-card grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+        <div class="sm:col-span-7 flex flex-col justify-between h-full space-y-4">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-[#FEFEFE] leading-snug">
+              [Giáo dục 30 năm] Đồng hành cùng con Giỏi Ngoại ngữ – Vững Công nghệ
+            </h3>
+            <p class="text-xs sm:text-sm text-[#FEFEFE]/90 mt-2 leading-relaxed">
+              Giải pháp giúp con rèn nếp tự học chủ động tại nhà với chi phí tối ưu nhất từ trải nghiệm nuôi 3 con trai của Hạnh
+            </p>
+          </div>
+          <div>
+            <a href="https://zalo.me/0911328128" target="_blank" rel="noopener" class="white-pill-btn block text-center w-full py-2.5 px-5 text-sm">
+              Nhận tư vấn
+            </a>
+          </div>
+        </div>
+        <div class="sm:col-span-5 rounded-[17px] bg-[#FAF6F0] text-[#3A2E25] h-[195px] sm:h-[215px] p-5 flex flex-col justify-between">
+          <span class="text-[11px] uppercase tracking-widest text-[#063d5b] font-bold">Đại sứ Giáo dục</span>
+          <h4 class="text-base font-bold text-[#1D2D35] leading-snug">
+            Nuôi con với<br>tầm nhìn 30 năm
+          </h4>
+          <p class="text-[11px] text-[#523F30]">Ngoại ngữ &bull; Công nghệ &bull; Tự học</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= 4. FORM THU PHỄU TRỰC TIẾP (GIỐNG HỆT KHỐI "LÀM QUEN VỚI MÌNH NHÉ!" CỦA ANOTHER LINH) ================= -->
+    <section id="leadFormSection" class="mt-6 max-w-[620px] mx-auto">
+      <div class="navy-gift-card p-6 sm:p-8 text-center">
+        <h2 class="text-lg sm:text-xl font-bold text-[#FEFEFE]">
+          Làm quen với mình nhé!
+        </h2>
+        <p class="text-xs sm:text-sm text-[#FEFEFE]/90 mt-1.5 leading-relaxed max-w-lg mx-auto">
+          Để lại thông tin của bạn, Hạnh sẽ gửi tặng ngay <strong>"Bản đồ Tái thiết 30 ngày"</strong> (File Word in thực hành) cùng các thông tin hữu ích và quà tặng định kỳ ^^
+        </p>
+
+        <form id="leadMagnetForm" class="mt-5 space-y-3.5 text-left">
+          <input type="text" id="leadName" required placeholder="Tên của bạn (First Name)" class="navy-pill-input text-sm">
+          <input type="text" id="leadContact" required placeholder="Email hoặc Số điện thoại Zalo" class="navy-pill-input text-sm">
+
+          <button type="submit" class="white-pill-btn w-full py-3.5 text-sm sm:text-base font-semibold mt-1">
+            OK
+          </button>
+        </form>
+
+        <!-- Hộp mở khóa ngay sau khi bấm OK -->
+        <div id="unlockedLeadBox" class="hidden mt-5 p-5 rounded-[17px] border-2 border-[#FEFEFE] bg-[#5b7483]/40 text-left space-y-3">
+          <p class="text-sm font-bold text-[#FEFEFE]">
+            🌱 Cảm ơn <span id="unlockedUserName">bạn</span>! Quà tặng của bạn đã được mở khóa:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <a href="14_Ban_Do_Tai_Thiet_30_Ngay_Lead_Magnet_Dau_Pheu_Beacons.docx" download
+               class="white-pill-btn py-2.5 px-4 text-xs sm:text-sm text-center block font-semibold">
+              ⬇ Tải File Word (.docx)
+            </a>
+            <button type="button" onclick="openModal('modalReadMap')"
+                    class="py-2.5 px-4 rounded-[17px] border-2 border-[#FEFEFE] text-[#FEFEFE] text-xs sm:text-sm hover:bg-white/10 transition">
+              📖 Đọc Bản Đồ Trên Trang
+            </button>
+          </div>
+          <p class="text-xs text-[#FEFEFE]/90 pt-1">
+            Lời chào của bạn đã được sao chép sẵn. Bấm <a href="https://zalo.me/0911328128" target="_blank" class="underline font-bold">vào đây để mở Zalo Hạnh Nguyễn (0911.328.128)</a> nhận lộ trình 7 ngày tiếp theo nhé!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER LOGO -->
+    <footer class="mt-10 text-center text-xs text-[#FEFEFE]/85 space-y-1">
+      <p class="font-handle text-base font-bold tracking-tight text-[#FEFEFE]">hanhsecondlife</p>
+      <p>"Không giúp người ta chạy trốn khỏi cuộc đời cũ; giúp họ xây lại một cuộc đời mới có nền tảng."</p>
+    </footer>
+
+  </main>
+
+  <!-- ================= CÁC CỬA SỔ POPUP (MODALS) TƯƠNG TÁC ================= -->
+
+  <!-- MODAL 1: TRẮC NGHIỆM 60 GIÂY -->
+  <div id="modalQuiz" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4 overflow-y-auto">
+    <div class="bg-[#063d5b] border-2 border-[#FEFEFE] text-[#FEFEFE] rounded-[20px] max-w-lg w-full p-6 sm:p-7 shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal('modalQuiz')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Trắc nghiệm chẩn đoán 60 giây</p>
+      <h3 class="text-xl font-bold mt-1">Bạn đang ở tầng nào của khủng hoảng?</h3>
+
+      <form id="quizForm" class="mt-4 space-y-4 text-xs sm:text-sm">
+        <div class="p-4 rounded-[15px] bg-[#5b7483]/35 border border-[#FEFEFE]/30 space-y-1.5">
+          <p class="font-bold mb-2">1. Khi nghĩ về tiền bạc và công việc mỗi tối, cảm giác rõ nhất của bạn là:</p>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="q1" value="3" required class="mt-1"> <span>Hoảng loạn, mất ngủ vì áp lực nợ hoặc vừa thua lỗ lớn.</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="q1" value="2" class="mt-1"> <span>Mệt mỏi vì đi làm nhiều năm nhưng chỉ đủ trả hóa đơn, thiếu quỹ dự phòng.</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="q1" value="1" class="mt-1"> <span>Có tích lũy cơ bản nhưng bế tắc trong vùng an toàn, muốn làm Sự nghiệp thứ 2.</span></label>
+        </div>
+
+        <div class="p-4 rounded-[15px] bg-[#5b7483]/35 border border-[#FEFEFE]/30 space-y-1.5">
+          <p class="font-bold mb-2">2. Nếu ngày mai nguồn thu chính tạm dừng, gia đình bạn trụ được bao lâu mà không phải vay mượn?</p>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="q2" value="3" required class="mt-1"> <span>Chưa đầy 1 tháng (hoặc đang âm dòng tiền hàng tháng).</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="q2" value="2" class="mt-1"> <span>Khoảng 1 đến 3 tháng.</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="q2" value="1" class="mt-1"> <span>Từ 6 đến 12 tháng trở lên.</span></label>
+        </div>
+
+        <div class="p-4 rounded-[15px] bg-[#5b7483]/35 border border-[#FEFEFE]/30 space-y-1.5">
+          <p class="font-bold mb-2">3. Trạng thái năng lượng cơ thể và tâm trí của bạn trong 30 ngày qua:</p>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="q3" value="3" required class="mt-1"> <span>Kiệt sức, dễ tủi thân/cáu gắt, thức dậy thấy nặng nề.</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="q3" value="2" class="mt-1"> <span>Lúc lên lúc xuống thất thường, hay bị cuốn vào việc không tên.</span></label>
+          <label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="q3" value="1" class="mt-1"> <span>Tương đối ổn định, sẵn sàng hành động nếu có bản đồ đúng.</span></label>
+        </div>
+
+        <button type="submit" class="white-pill-btn w-full py-3 text-sm font-semibold">
+          Xem kết quả chẩn đoán &rarr;
+        </button>
+      </form>
+
+      <div id="quizResultBox" class="hidden mt-4 p-4 rounded-[15px] border-2 border-[#FEFEFE] bg-[#5b7483]/50 space-y-2">
+        <p id="quizResultTitle" class="font-bold text-sm sm:text-base"></p>
+        <p id="quizResultDesc" class="text-xs sm:text-sm leading-relaxed"></p>
+        <button onclick="closeModal('modalQuiz'); scrollToLeadForm('Bản đồ Tái thiết 30 ngày');" class="white-pill-btn w-full py-2.5 text-xs font-semibold mt-2">
+          Nhận Bản Đồ Tái Thiết 30 Ngày Ngay
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: ĐỌC BẢN ĐỒ TÁI THIẾT 30 NGÀY -->
+  <div id="modalReadMap" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4 overflow-y-auto">
+    <div class="bg-[#063d5b] border-2 border-[#FEFEFE] text-[#FEFEFE] rounded-[20px] max-w-xl w-full p-6 sm:p-7 shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto space-y-4">
+      <button onclick="closeModal('modalReadMap')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Guidebook Thực Hành Đầu Phễu</p>
+      <h3 class="text-xl font-bold">Bản Đồ Tái Thiết 30 Ngày: 5 Hợp Phần Cốt Lõi</h3>
+      <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
+        <div class="p-3.5 rounded-[14px] bg-[#5b7483]/35 border border-[#FEFEFE]/30">
+          <strong>1. Bảng Chụp Nhanh Tài Chính (4 Ô Sự Thật):</strong> Liệt kê trung thực: (1) Tiền mặt thanh khoản rút được ngay; (2) Tổng gốc & lãi các khoản nợ; (3) Thu nhập chắc chắn 100% trong 30 ngày tới; (4) Chi phí sinh tồn cứng của mẹ và con.
+        </div>
+        <div class="p-3.5 rounded-[14px] bg-[#5b7483]/35 border border-[#FEFEFE]/30">
+          <strong>2. Phân Loại Nợ & Cắt Máu Dòng Tiền Âm:</strong> Tách biệt bữa cơm/học phí của con khỏi áp lực nợ. Xếp nợ theo 3 nhóm: Đỏ (lãi cao xử lý trước) – Vàng (ngân hàng) – Xanh (người thân, xin giãn tiến độ).
+        </div>
+        <div class="p-3.5 rounded-[14px] bg-[#5b7483]/35 border border-[#FEFEFE]/30">
+          <strong>3. Lịch Phục Hồi Năng Lượng Tối Thiểu (4 Điểm Neo):</strong> Sáng: 20 phút vận động & quay về bên trong trước khi mở điện thoại &bull; Trưa: 5 phút ghi dòng tiền &bull; Tối: Giờ đồng hành tự học cùng con & đọc 10 trang sách &bull; 22h30: Ngủ phục hồi thần kinh.
+        </div>
+        <div class="p-3.5 rounded-[14px] bg-[#5b7483]/35 border border-[#FEFEFE]/30">
+          <strong>4. Kịch Bản Trò Chuyện Không Đổ Lỗi Với Gia Đình & Cam Kết 30 Ngày Đóng Băng Rủi Ro:</strong> Tuyệt đối không vay mới để gỡ, không đầu tư lướt sóng trong 30 ngày đầu tiên.
+        </div>
+      </div>
+      <a href="14_Ban_Do_Tai_Thiet_30_Ngay_Lead_Magnet_Dau_Pheu_Beacons.docx" download
+         class="white-pill-btn block w-full text-center py-3 text-sm font-semibold">
+        ⬇ Tải Bản Đầy Đủ File Word (.docx) Về Máy
+      </a>
+    </div>
+  </div>
+
+  <!-- MODAL 3: BỘ CÔNG CỤ TÁI THIẾT TÀI CHÍNH GIA ĐÌNH -->
+  <div id="modalToolkit" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4 overflow-y-auto">
+    <div class="bg-[#063d5b] border-2 border-[#FEFEFE] text-[#FEFEFE] rounded-[20px] max-w-lg w-full p-6 sm:p-7 shadow-2xl relative my-8 space-y-4">
+      <button onclick="closeModal('modalToolkit')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Tầng 4 &bull; Bộ Công Cụ Thực Hành</p>
+      <h3 class="text-xl font-bold">Bộ Công Cụ Tái Thiết Tài Chính Gia Đình</h3>
+      <ul class="space-y-2.5 text-xs sm:text-sm leading-relaxed">
+        <li>&bull; <strong>Workbook Thực hành 90 ngày:</strong> Lộ trình cầm tay chỉ việc từng tuần.</li>
+        <li>&bull; <strong>Bảng tính Dòng tiền & Tháp Phòng Thủ 4 Tầng:</strong> Phân bổ tự động ngày nhận lương.</li>
+        <li>&bull; <strong>Bản đồ Khoanh vùng & Tất toán Nợ thông minh.</strong></li>
+        <li>&bull; <strong>Video hướng dẫn chi tiết</strong> từ Hạnh Nguyễn (Thạc sĩ TCNH FTU – 10 năm NHNN).</li>
+      </ul>
+      <a href="https://zalo.me/0911328128" target="_blank" class="white-pill-btn block w-full text-center py-3 text-sm font-semibold">
+        Nhắn Zalo Hạnh Nguyễn (0911.328.128) Để Nhận Bộ Công Cụ
+      </a>
+    </div>
+  </div>
+
+  <!-- MODAL 4: WORKSHOP & REBUILD 90 -->
+  <div id="modalRebuild90" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4 overflow-y-auto">
+    <div class="bg-[#063d5b] border-2 border-[#FEFEFE] text-[#FEFEFE] rounded-[20px] max-w-lg w-full p-6 sm:p-7 shadow-2xl relative my-8 space-y-4">
+      <button onclick="closeModal('modalRebuild90')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Workshop 90 Phút & Chương Trình Nhóm Nhỏ</p>
+      <h3 class="text-xl font-bold">Làm Lại Từ Số Âm & Rebuild 90 Ngày</h3>
+      <div class="p-4 rounded-[15px] bg-[#5b7483]/35 border border-[#FEFEFE]/30 space-y-2 text-xs sm:text-sm">
+        <p class="font-bold">3 Kết Quả Thực Tế Sau 90 Ngày Đồng Hành:</p>
+        <p>1. Có bản đồ tiền và kế hoạch dòng tiền gia đình rõ ràng, minh bạch.</p>
+        <p>2. Có lịch phục hồi năng lượng và hệ thống nếp nhà thực tế.</p>
+        <p>3. Có một hướng thử nghiệm nghề nghiệp hoặc thu nhập mới từ chuyên môn sẵn có.</p>
+      </div>
+      <a href="https://zalo.me/0911328128" target="_blank" class="white-pill-btn block w-full text-center py-3 text-sm font-semibold">
+        Đăng Ký Workshop / Tư Vấn Rebuild 90 Qua Zalo
+      </a>
+    </div>
+  </div>
+
+  <!-- MODAL 5: CÂU CHUYỆN CỦA HẠNH NGUYỄN -->
+  <div id="modalStory" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4 overflow-y-auto">
+    <div class="bg-[#063d5b] border-2 border-[#FEFEFE] text-[#FEFEFE] rounded-[20px] max-w-xl w-full p-6 sm:p-7 shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto space-y-3.5">
+      <button onclick="closeModal('modalStory')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Về Hạnh Nguyễn &bull; Hạnh Second Life</p>
+      <h3 class="text-xl font-bold">
+        Từ 11 năm vùng an toàn Nhà nước, cú ngã 5 tỷ tuổi 34 đến hành trình tái thiết ở tuổi 37
+      </h3>
+      <div class="space-y-3 text-xs sm:text-sm leading-relaxed text-[#FEFEFE]/95">
+        <p>Chào bạn, mình là <strong>Hạnh Nguyễn</strong> (Thạc sĩ Tài chính – Ngân hàng ĐH Ngoại thương FTU, 1 năm ngành Thuế và 10 năm phụ trách Quản lý Vàng bạc – Ngoại hối & Tín dụng tại Ngân hàng Nhà nước Việt Nam).</p>
+        <p>Năm 34 tuổi, trăn trở trước "cuốn phim 25 năm biết trước đoạn kết" và khao khát tìm một tấm bản đồ tự do cho 3 cậu con trai, mình quyết định nghỉ việc bước ra đầu tư và mở showroom thời trang.</p>
+        <p>Nhưng cú sập thị trường tài chính – BĐS cuối 2022–2023 cùng làn sóng dịch chuyển sang online đã dạy cho mình bài học xương máu trị giá gần <strong>5 tỷ đồng</strong>. Mình quyết định cắt lỗ, đóng cửa showroom khi đang mang bầu bé thứ 3 ở tháng thứ 7 (sau 5 lần dọa sảy thai), chấm dứt cảnh 11h đêm bụng bầu vượt mặt vẫn đứng một mình ở cửa hàng.</p>
+        <p>Sau gần 1 năm khủng hoảng và trầm cảm sau sinh, mình đã <strong>đứng dậy bằng cách quay về bên trong thấu hiểu bản thân mình và kỷ luật tự học</strong> mỗi ngày. Ở tuổi 37, mình tạo nên <strong>Hạnh Second Life</strong> với tâm niệm: <em>Không giúp người ta chạy trốn khỏi cuộc đời cũ; mà giúp phụ nữ tuổi 28–45 xây lại một cuộc đời mới có nền tảng, bình an trong tâm trí, rõ ràng với tiền và tự chủ trong sự nghiệp.</em></p>
+      </div>
+      <div class="pt-2 space-y-2">
+        <a href="https://www.facebook.com/profile.php?id=61596368464266" target="_blank" class="white-pill-btn block w-full text-center py-2.5 text-xs sm:text-sm font-semibold">
+          Ghé thăm Fanpage Hạnh Second Life &rarr;
+        </a>
+        <a href="https://www.facebook.com/ByHanhNguyen89" target="_blank" class="outline-pill-btn block w-full text-center py-2.5 text-xs sm:text-sm">
+          Ghé thăm FB Hạnh Nguyễn (Đại sứ Giáo dục và mẹ mentor - nuôi con tầm nhìn 30 năm) &rarr;
+        </a>
+        <a href="https://www.facebook.com/hanhnguyen89official" target="_blank" class="outline-pill-btn block w-full text-center py-2.5 text-xs sm:text-sm">
+          Ghé thăm FB Hanh Nguyen (chăm sóc bản thân, tâm hồn và đam mê xê dịch) &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.remove('hidden');
+        el.classList.add('flex');
+      }
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.add('hidden');
+        el.classList.remove('flex');
+      }
+    }
+
+    function scrollToLeadForm() {
+      const sec = document.getElementById('leadFormSection');
+      if (sec) {
+        sec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          document.getElementById('leadName').focus();
+        }, 450);
+      }
+    }
+
+    // Cho phép chị Hạnh chọn ảnh bất kỳ từ máy tính để đổi ngay ảnh đầu tiên & tự động lưu lại
+    const uploadInput = document.getElementById('uploadAvatarInput');
+    const heroImg = document.getElementById('heroPortraitImg');
+    const bannerImg = document.getElementById('bannerPortraitImg');
+    const ambientBg = document.getElementById('ambientBackdrop');
+
+    // Khôi phục ảnh đã chọn nếu có trong trình duyệt
+    try {
+      const savedImg = localStorage.getItem('hanh_beacons_custom_avatar');
+      if (savedImg) {
+        if (heroImg) heroImg.src = savedImg;
+        if (bannerImg) bannerImg.src = savedImg;
+        if (ambientBg) {
+          ambientBg.style.backgroundImage = `linear-gradient(180deg, rgba(135, 168, 188, 0.45) 0%, rgba(91, 116, 131, 0.55) 55%, rgba(168, 152, 138, 0.65) 100%), url('${savedImg}')`;
+        }
+      }
+    } catch (e) {}
+
+    if (uploadInput) {
+      uploadInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          const dataUrl = evt.target.result;
+          if (heroImg) heroImg.src = dataUrl;
+          if (bannerImg) bannerImg.src = dataUrl;
+          if (ambientBg) {
+            ambientBg.style.backgroundImage = `linear-gradient(180deg, rgba(135, 168, 188, 0.45) 0%, rgba(91, 116, 131, 0.55) 55%, rgba(168, 152, 138, 0.65) 100%), url('${dataUrl}')`;
+          }
+          try {
+            localStorage.setItem('hanh_beacons_custom_avatar', dataUrl);
+          } catch (err) {}
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Xử lý Form nhận quà
+    const leadForm = document.getElementById('leadMagnetForm');
+    if (leadForm) {
+      leadForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('leadName').value.trim();
+        const contact = document.getElementById('leadContact').value.trim();
+
+        document.getElementById('unlockedUserName').textContent = name || 'bạn';
+        document.getElementById('unlockedLeadBox').classList.remove('hidden');
+
+        const msg = `Chào chị Hạnh Nguyễn (Hạnh Second Life), mình là ${name} (${contact}). Mình vừa đăng ký nhận "Bản đồ Tái thiết 30 ngày" trên Beacons.`;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(msg).catch(() => {});
+        }
+      });
+    }
+
+    // Xử lý Trắc nghiệm 60s
+    const quizForm = document.getElementById('quizForm');
+    if (quizForm) {
+      quizForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const q1 = parseInt(quizForm.querySelector('input[name="q1"]:checked').value, 10);
+        const q2 = parseInt(quizForm.querySelector('input[name="q2"]:checked').value, 10);
+        const q3 = parseInt(quizForm.querySelector('input[name="q3"]:checked').value, 10);
+        const total = q1 + q2 + q3;
+
+        const titleEl = document.getElementById('quizResultTitle');
+        const descEl = document.getElementById('quizResultDesc');
+        const box = document.getElementById('quizResultBox');
+
+        if (total >= 7) {
+          titleEl.textContent = 'KẾT QUẢ: TẦNG 1 — CẤP CỨU DÒNG TIỀN & HỒI SỨC TÂM TRÍ (' + total + '/9 điểm)';
+          descEl.textContent = 'Bạn đang ở giai đoạn áp lực cao nhất (giống Hạnh năm 34–35 tuổi). Lúc này tuyệt đối KHÔNG vay mới hay đầu tư gỡ gạc. Hãy nhận ngay "Bản đồ Tái thiết 30 ngày" bên dưới để cầm máu dòng tiền và thực hiện 4 điểm neo phục hồi năng lượng trước tiên!';
+        } else if (total >= 5) {
+          titleEl.textContent = 'KẾT QUẢ: TẦNG 2 — TÁI CẤU TRÚC TÀI CHÍNH & NẾP NHÀ (' + total + '/9 điểm)';
+          descEl.textContent = 'Bạn đã qua cơn sốc đầu tiên nhưng nền móng phòng thủ của gia đình còn mỏng. Bước đi phù hợp nhất là áp dụng "Bộ công cụ Tái thiết Tài chính Gia đình" và tham gia Workshop "Làm lại từ số âm" để xây Tháp phòng thủ 4 tầng.';
+        } else {
+          titleEl.textContent = 'KẾT QUẢ: TẦNG 3 — SẴN SÀNG XÂY SỰ NGHIỆP THỨ 2 & TÀI SẢN SỐ (' + total + '/9 điểm)';
+          descEl.textContent = 'Nền tảng phòng thủ của bạn khá tốt! Đây là lúc bạn có thể xây "Cây cầu chuyển đổi", đóng gói chuyên môn 10 năm đi làm thành nguồn thu nhập độc lập cùng chương trình "Rebuild 90 — Tái thiết cuộc đời trong 90 ngày".';
+        }
+        box.classList.remove('hidden');
+      });
+    }
+  </script>
+</body>
+</html>
