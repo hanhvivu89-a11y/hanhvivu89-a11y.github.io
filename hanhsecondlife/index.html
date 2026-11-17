@@ -658,7 +658,7 @@
       <!-- Khung gắn Link Google Sheet Apps Script -->
       <div class="p-4 rounded-[14px] bg-[#5b7483]/35 border border-[#FEFEFE]/30 space-y-2.5 text-xs">
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <span class="font-bold text-[#FEFEFE]">🔗 Link Google Sheet Web App (Tự động đổ dữ liệu vào trang tính của chị):</span>
+          <span class="font-bold text-[#FEFEFE]">🔗 File Google Sheet chính thức của chị: <a href="https://docs.google.com/spreadsheets/d/1KoStguztKeNUY6Bag1lbVotBcVAxUQIdy9fMTCIwQPk/edit" target="_blank" class="underline text-amber-200">Mở Bảng Tính Lead Tại Đây &rarr;</a></span>
           <button type="button" onclick="copyGoogleAppsScriptCode()" class="underline text-amber-200 hover:text-white font-semibold">
             📋 Bấm copy mã Google Apps Script
           </button>
@@ -787,7 +787,8 @@
     }
 
     function copyGoogleAppsScriptCode() {
-      const scriptCode = `// MÃ KẾT NỐI TỰ ĐỘNG BEACONS -> GOOGLE SHEET & GMAIL (hanhmaster.ftu@gmail.com)
+      const scriptCode = `// MÃ KẾT NỐI TỰ ĐỘNG BEACONS -> GOOGLE SHEET CHÍNH THỨC CỦA CHỊ HẠNH (hanhmaster.ftu@gmail.com)
+const SPREADSHEET_ID = "1KoStguztKeNUY6Bag1lbVotBcVAxUQIdy9fMTCIwQPk";
 const OWNER_EMAIL = "hanhmaster.ftu@gmail.com";
 
 function doPost(e) {
@@ -795,18 +796,16 @@ function doPost(e) {
   lock.tryLock(10000);
   try {
     var data = JSON.parse(e.postData.contents);
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(["Thời gian", "Họ và tên", "Số điện thoại", "Email", "Món quà / Lộ trình", "Nguồn"]);
-      sheet.getRange(1, 1, 1, 6).setFontWeight("bold").setBackground("#063d5b").setFontColor("#ffffff");
-    }
+    var sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheets()[0];
+    var nextRow = sheet.getLastRow();
     sheet.appendRow([
+      nextRow,
       data.time || new Date().toLocaleString("vi-VN"),
       data.name || "",
       "'" + (data.phone || ""),
       data.email || "",
       data.gift || "",
-      data.source || "Beacons Hạnh Second Life"
+      "Mới đăng ký"
     ]);
     MailApp.sendEmail({
       to: OWNER_EMAIL,
@@ -818,7 +817,8 @@ function doPost(e) {
                 "<li><b>Email:</b> " + data.email + "</li>" +
                 "<li><b>Món quà đã tải:</b> " + data.gift + "</li>" +
                 "<li><b>Thời gian:</b> " + data.time + "</li>" +
-                "</ul>"
+                "</ul>" +
+                "<p><a href='https://docs.google.com/spreadsheets/d/1KoStguztKeNUY6Bag1lbVotBcVAxUQIdy9fMTCIwQPk/edit'>Bấm vào đây để mở Bảng Google Sheet Danh sách Lead</a></p>"
     });
     return ContentService.createTextOutput(JSON.stringify({ status: "success" })).setMimeType(ContentService.MimeType.JSON);
   } finally {
@@ -827,7 +827,7 @@ function doPost(e) {
 }`;
       if (navigator.clipboard) {
         navigator.clipboard.writeText(scriptCode).then(() => {
-          alert('Đã copy mã Google Apps Script! Chị chỉ cần mở Google Sheet -> Tiện ích mở rộng -> Apps Script -> Dán mã này vào và bấm Triển khai (Deploy) -> Ứng dụng web là xong!');
+          alert('Đã copy mã Google Apps Script gắn sẵn ID bảng tính của chị! Chị chỉ cần mở bảng tính -> Tiện ích mở rộng -> Apps Script -> Dán mã này vào và bấm Triển khai (Deploy) -> Ứng dụng web là xong!');
         });
       }
     }
