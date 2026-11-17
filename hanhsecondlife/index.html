@@ -664,14 +664,14 @@
           </button>
         </div>
         <div class="flex flex-col sm:flex-row gap-2">
-          <input type="url" id="gsheetWebhookInput" placeholder="Dán link https://script.google.com/macros/s/.../exec vào đây"
+          <input type="url" id="gsheetWebhookInput" value="https://script.google.com/macros/s/AKfycbwNBHpUQAwL802RoamyIfL5vvaaomAz8XG8i5r94hlm0hUF8ajl-pZ70whqj7NmQQwh/exec" placeholder="Dán link https://script.google.com/macros/s/.../exec vào đây"
                  class="navy-pill-input text-xs py-2 px-3.5 flex-1">
           <button type="button" onclick="saveGsheetWebhookUrl()" class="white-pill-btn py-2 px-4 text-xs font-semibold shrink-0">
             Lưu kết nối
           </button>
         </div>
-        <p id="gsheetStatusText" class="text-[11px] text-[#FEFEFE]/80">
-          *Mặc định mọi Lead đều được tự động gửi thông báo về email <strong>hanhmaster.ftu@gmail.com</strong> và lưu vào bảng dưới đây.
+        <p id="gsheetStatusText" class="text-[11px] text-emerald-200 font-semibold">
+          ✅ Đã kết nối tự động 100% với Bảng Google Sheet "Danh sách Lead - Hạnh Second Life" và Gmail <strong>hanhmaster.ftu@gmail.com</strong>!
         </p>
       </div>
 
@@ -765,7 +765,7 @@
 
     // Cấu hình Email & Google Sheet của chị Hạnh Nguyễn
     const OWNER_EMAIL = 'hanhmaster.ftu@gmail.com';
-    const DEFAULT_GSHEET_WEBHOOK = '';
+    const DEFAULT_GSHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwNBHpUQAwL802RoamyIfL5vvaaomAz8XG8i5r94hlm0hUF8ajl-pZ70whqj7NmQQwh/exec';
 
     function getGsheetWebhookUrl() {
       try {
