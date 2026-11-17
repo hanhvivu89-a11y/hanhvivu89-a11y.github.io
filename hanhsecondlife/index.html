@@ -647,12 +647,32 @@
       </button>
       <div class="flex flex-wrap items-center justify-between gap-2 pr-8">
         <div>
-          <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Quản trị Phễu Hạnh Second Life</p>
-          <h3 class="text-lg sm:text-xl font-bold">Danh sách Lead khách hàng đã đăng ký</h3>
+          <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Quản trị Phễu Hạnh Second Life (hanhmaster.ftu@gmail.com)</p>
+          <h3 class="text-lg sm:text-xl font-bold">Danh sách Lead & Kết nối Google Sheet tự động</h3>
         </div>
         <button type="button" onclick="exportLeadsToCSV()" class="white-pill-btn py-2 px-4 text-xs font-semibold">
           ⬇ Xuất File Excel (.CSV)
         </button>
+      </div>
+
+      <!-- Khung gắn Link Google Sheet Apps Script -->
+      <div class="p-4 rounded-[14px] bg-[#5b7483]/35 border border-[#FEFEFE]/30 space-y-2.5 text-xs">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="font-bold text-[#FEFEFE]">🔗 Link Google Sheet Web App (Tự động đổ dữ liệu vào trang tính của chị):</span>
+          <button type="button" onclick="copyGoogleAppsScriptCode()" class="underline text-amber-200 hover:text-white font-semibold">
+            📋 Bấm copy mã Google Apps Script
+          </button>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <input type="url" id="gsheetWebhookInput" placeholder="Dán link https://script.google.com/macros/s/.../exec vào đây"
+                 class="navy-pill-input text-xs py-2 px-3.5 flex-1">
+          <button type="button" onclick="saveGsheetWebhookUrl()" class="white-pill-btn py-2 px-4 text-xs font-semibold shrink-0">
+            Lưu kết nối
+          </button>
+        </div>
+        <p id="gsheetStatusText" class="text-[11px] text-[#FEFEFE]/80">
+          *Mặc định mọi Lead đều được tự động gửi thông báo về email <strong>hanhmaster.ftu@gmail.com</strong> và lưu vào bảng dưới đây.
+        </p>
       </div>
 
       <div id="adminLeadsTableWrap" class="overflow-x-auto text-xs border border-[#FEFEFE]/30 rounded-[14px]">
@@ -743,14 +763,84 @@
     }
     updateLeadCountBadge();
 
-    // Lưu Lead mới (Họ tên, SĐT, Email, Món quà)
+    // Cấu hình Email & Google Sheet của chị Hạnh Nguyễn
+    const OWNER_EMAIL = 'hanhmaster.ftu@gmail.com';
+    const DEFAULT_GSHEET_WEBHOOK = '';
+
+    function getGsheetWebhookUrl() {
+      try {
+        return localStorage.getItem('hanhsecondlife_gsheet_webhook') || DEFAULT_GSHEET_WEBHOOK;
+      } catch (e) {
+        return DEFAULT_GSHEET_WEBHOOK;
+      }
+    }
+
+    function saveGsheetWebhookUrl() {
+      const inp = document.getElementById('gsheetWebhookInput');
+      if (!inp) return;
+      const val = inp.value.trim();
+      try {
+        localStorage.setItem('hanhsecondlife_gsheet_webhook', val);
+        const st = document.getElementById('gsheetStatusText');
+        if (st) st.innerHTML = '✅ Đã lưu kết nối Google Sheet thành công! Mọi khách tải quà sẽ tự động nhảy vào Google Sheet của chị.';
+      } catch (e) {}
+    }
+
+    function copyGoogleAppsScriptCode() {
+      const scriptCode = `// MÃ KẾT NỐI TỰ ĐỘNG BEACONS -> GOOGLE SHEET & GMAIL (hanhmaster.ftu@gmail.com)
+const OWNER_EMAIL = "hanhmaster.ftu@gmail.com";
+
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  try {
+    var data = JSON.parse(e.postData.contents);
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(["Thời gian", "Họ và tên", "Số điện thoại", "Email", "Món quà / Lộ trình", "Nguồn"]);
+      sheet.getRange(1, 1, 1, 6).setFontWeight("bold").setBackground("#063d5b").setFontColor("#ffffff");
+    }
+    sheet.appendRow([
+      data.time || new Date().toLocaleString("vi-VN"),
+      data.name || "",
+      "'" + (data.phone || ""),
+      data.email || "",
+      data.gift || "",
+      data.source || "Beacons Hạnh Second Life"
+    ]);
+    MailApp.sendEmail({
+      to: OWNER_EMAIL,
+      subject: "[Lead Mới - Hạnh Second Life] " + data.name + " - " + data.phone,
+      htmlBody: "<h3>Chị Hạnh ơi, có khách hàng mới vừa tải quà trên Beacons Hạnh Second Life:</h3>" +
+                "<ul>" +
+                "<li><b>Họ và tên:</b> " + data.name + "</li>" +
+                "<li><b>Số điện thoại / Zalo:</b> " + data.phone + "</li>" +
+                "<li><b>Email:</b> " + data.email + "</li>" +
+                "<li><b>Món quà đã tải:</b> " + data.gift + "</li>" +
+                "<li><b>Thời gian:</b> " + data.time + "</li>" +
+                "</ul>"
+    });
+    return ContentService.createTextOutput(JSON.stringify({ status: "success" })).setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(scriptCode).then(() => {
+          alert('Đã copy mã Google Apps Script! Chị chỉ cần mở Google Sheet -> Tiện ích mở rộng -> Apps Script -> Dán mã này vào và bấm Triển khai (Deploy) -> Ứng dụng web là xong!');
+        });
+      }
+    }
+
+    // Lưu Lead mới (Họ tên, SĐT, Email, Món quà) và đẩy tự động về Google Sheet + Email hanhmaster.ftu@gmail.com
     function saveLeadRecord(name, phone, email, giftTitle) {
       const record = {
         name: name,
         phone: phone,
         email: email,
         gift: giftTitle,
-        time: new Date().toLocaleString('vi-VN')
+        time: new Date().toLocaleString('vi-VN'),
+        source: window.location.href
       };
       try {
         const leads = getStoredLeads();
@@ -760,7 +850,36 @@
       } catch (e) {}
       updateLeadCountBadge();
 
-      // Chuẩn bị sẵn tin nhắn gửi về Zalo 0911328128 của chị Hạnh
+      // 1. Đẩy tự động vào Google Sheet (nếu đã gắn link Apps Script Web App)
+      const webhookUrl = getGsheetWebhookUrl();
+      if (webhookUrl && webhookUrl.startsWith('https://script.google.com/')) {
+        fetch(webhookUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(record)
+        }).catch(() => {});
+      }
+
+      // 2. Gửi thông báo Lead tự động thẳng về Email hanhmaster.ftu@gmail.com qua FormSubmit
+      fetch('https://formsubmit.co/ajax/' + OWNER_EMAIL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: '[Lead Beacons Hạnh Second Life] ' + name + ' (' + phone + ')',
+          Ho_va_Ten: name,
+          So_Dien_Thoai_Zalo: phone,
+          Email_Khach_Hang: email,
+          Mon_Qua_Dang_Ky: giftTitle,
+          Thoi_Gian: record.time,
+          _template: 'table'
+        })
+      }).catch(() => {});
+
+      // 3. Chuẩn bị sẵn tin nhắn gửi về Zalo 0911328128 của chị Hạnh
       const zaloMsg = `Chào chị Hạnh Nguyễn (Hạnh Second Life), mình vừa đăng ký nhận quà trên Beacons:\n- Họ tên: ${name}\n- SĐT/Zalo: ${phone}\n- Email: ${email}\n- Quà nhận: ${giftTitle}`;
       if (navigator.clipboard) {
         navigator.clipboard.writeText(zaloMsg).catch(() => {});
