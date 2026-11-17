@@ -42,7 +42,7 @@
       background-color: #4a606d;
     }
 
-    /* Blurred Ambient Portrait Backdrop (Giống hệt khung ngoài của beacons.ai/anotherlinh) */
+    /* Blurred Ambient Portrait Backdrop */
     .ambient-backdrop {
       position: fixed;
       inset: -40px;
@@ -150,7 +150,7 @@
       transition: border-color 0.2s ease, background-color 0.2s ease;
     }
     .navy-pill-input::placeholder {
-      color: rgba(254, 254, 254, 0.62);
+      color: rgba(254, 254, 254, 0.65);
     }
     .navy-pill-input:focus {
       background-color: #08496d;
@@ -247,7 +247,7 @@
       </div>
     </section>
 
-    <!-- ================= 3. QUÀ TẶNG VÀ LỘ TRÌNH TÁI THIẾT TỪ MÌNH (ĐÃ BỎ CÁC Ô NHỎ) ================= -->
+    <!-- ================= 3. QUÀ TẶNG VÀ LỘ TRÌNH TÁI THIẾT TỪ MÌNH (MỌI QUÀ ĐỀU QUA CỔNG THU LEAD 3 TRƯỜNG) ================= -->
     <section class="mt-9 max-w-[620px] mx-auto space-y-4">
       <div class="text-center mb-3">
         <h2 class="text-lg sm:text-xl font-bold text-[#FEFEFE]">Quà tặng và lộ trình tái thiết từ mình</h2>
@@ -265,13 +265,12 @@
             </p>
           </div>
           <div>
-            <button type="button" onclick="scrollToLeadForm('Bản đồ Tái thiết 30 ngày')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
+            <button type="button" onclick="requestGiftWithLeadGate('gift_map30')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
               Nhận quà
             </button>
           </div>
         </div>
-        <!-- Minh họa nghệ thuật bên phải giống hệt mẫu Another Linh -->
-        <div onclick="openModal('modalReadMap')" class="sm:col-span-5 cursor-pointer editorial-thumb h-[195px] sm:h-[215px] p-5 flex flex-col justify-between shadow-inner">
+        <div onclick="requestGiftWithLeadGate('gift_map30')" class="sm:col-span-5 cursor-pointer editorial-thumb h-[195px] sm:h-[215px] p-5 flex flex-col justify-between shadow-inner">
           <div class="w-12 h-12 rounded-full bg-[#B56543]/15 border border-[#B56543]/30 flex items-center justify-center text-[#9E4F2E]">
             <i data-lucide="compass" class="w-6 h-6"></i>
           </div>
@@ -297,12 +296,12 @@
             </p>
           </div>
           <div>
-            <button type="button" onclick="openModal('modalQuiz')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
+            <button type="button" onclick="requestGiftWithLeadGate('gift_quiz')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
               Làm bài đánh giá
             </button>
           </div>
         </div>
-        <div onclick="openModal('modalQuiz')" class="sm:col-span-5 cursor-pointer rounded-[17px] bg-[#FAF6F0] text-[#3A2E25] h-[195px] sm:h-[215px] p-5 flex flex-col justify-between relative overflow-hidden">
+        <div onclick="requestGiftWithLeadGate('gift_quiz')" class="sm:col-span-5 cursor-pointer rounded-[17px] bg-[#FAF6F0] text-[#3A2E25] h-[195px] sm:h-[215px] p-5 flex flex-col justify-between relative overflow-hidden">
           <div class="flex items-center gap-2">
             <span class="text-3xl font-bold text-[#6E5641]">3</span>
             <span class="text-xs font-bold leading-tight text-[#523F30]">Tầng Chẩn Đoán<br>& Lộ Trình</span>
@@ -315,24 +314,24 @@
         </div>
       </div>
 
-      <!-- CARD 3 (TẦNG 4 - BỘ CÔNG CỤ TÁI THIẾT TÀI CHÍNH GIA ĐÌNH) -->
+      <!-- CARD 3 (TẦNG 4 - BỘ CÔNG CỤ TÁI THIẾT TÀI CHÍNH GIA ĐÌNH & CHECKLIST) -->
       <div class="navy-gift-card grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
         <div class="sm:col-span-7 flex flex-col justify-between h-full space-y-4">
           <div>
             <h3 class="text-base sm:text-lg font-bold text-[#FEFEFE] leading-snug">
-              [Template & Workbook] Bộ công cụ Tái thiết Tài chính Gia đình
+              [Template & Checklist] Bản đồ Tài sản Gia đình 4 Tầng & Checklist Second Life
             </h3>
             <p class="text-xs sm:text-sm text-[#FEFEFE]/90 mt-2 leading-relaxed">
-              Trọn bộ Workbook 90 ngày, Bảng dòng tiền gia đình theo quy tắc 4 Tầng phòng thủ và Bản đồ xử lý nợ
+              Gửi tặng bạn Cẩm nang quy hoạch tài sản gia đình 4 tầng phòng thủ & 5 điều kiện sống còn trước khi chuyển đổi sự nghiệp
             </p>
           </div>
           <div>
-            <button type="button" onclick="openModal('modalToolkit')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
-              Xem bộ công cụ
+            <button type="button" onclick="requestGiftWithLeadGate('gift_toolkit4')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
+              Nhận quà
             </button>
           </div>
         </div>
-        <div onclick="openModal('modalToolkit')" class="sm:col-span-5 cursor-pointer rounded-[17px] bg-[#F7F3EB] text-[#3A2E25] h-[195px] sm:h-[215px] p-5 flex flex-col justify-between">
+        <div onclick="requestGiftWithLeadGate('gift_toolkit4')" class="sm:col-span-5 cursor-pointer rounded-[17px] bg-[#F7F3EB] text-[#3A2E25] h-[195px] sm:h-[215px] p-5 flex flex-col justify-between">
           <div class="flex items-center gap-2">
             <span class="text-3xl font-bold text-[#063d5b]">4</span>
             <span class="text-xs font-bold leading-tight text-[#063d5b]">Tầng Phòng Thủ<br>Tài Sản Gia Đình</span>
@@ -340,7 +339,7 @@
           <p class="text-xs italic text-[#5C4E41] leading-relaxed">
             "An toàn tài chính trước khi nghĩ đến làm giàu."
           </p>
-          <span class="text-[11px] font-semibold text-[#9E4F2E]">Workbook + File Bảng Tính &rarr;</span>
+          <span class="text-[11px] font-semibold text-[#9E4F2E]">Bản Đồ 4 Tầng + Checklist &rarr;</span>
         </div>
       </div>
 
@@ -356,18 +355,18 @@
             </p>
           </div>
           <div>
-            <button type="button" onclick="openModal('modalRebuild90')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
-              Tìm hiểu lộ trình
+            <button type="button" onclick="requestGiftWithLeadGate('gift_rebuild90')" class="white-pill-btn w-full py-2.5 px-5 text-sm">
+              Nhận lộ trình
             </button>
           </div>
         </div>
-        <div onclick="openModal('modalRebuild90')" class="sm:col-span-5 cursor-pointer editorial-thumb h-[195px] sm:h-[215px] p-5 flex flex-col justify-between">
+        <div onclick="requestGiftWithLeadGate('gift_rebuild90')" class="sm:col-span-5 cursor-pointer editorial-thumb h-[195px] sm:h-[215px] p-5 flex flex-col justify-between">
           <span class="text-[11px] uppercase tracking-widest text-[#7A583B] font-semibold">Mentoring Group</span>
           <div class="my-auto">
             <h4 class="text-xl font-bold text-[#3A2615]">Rebuild 90</h4>
             <p class="text-xs text-[#5C4328] mt-1">Tái thiết Tiền, Năng lượng & Sự nghiệp thứ 2</p>
           </div>
-          <span class="text-[11px] underline text-[#3A2615]">Xem 3 kết quả cam kết &rarr;</span>
+          <span class="text-[11px] underline text-[#3A2615]">Đăng ký nhận thông tin &rarr;</span>
         </div>
       </div>
 
@@ -383,12 +382,12 @@
             </p>
           </div>
           <div>
-            <a href="https://zalo.me/0911328128" target="_blank" rel="noopener" class="white-pill-btn block text-center w-full py-2.5 px-5 text-sm">
-              Nhận tư vấn
-            </a>
+            <button type="button" onclick="requestGiftWithLeadGate('gift_edu30')" class="white-pill-btn block text-center w-full py-2.5 px-5 text-sm">
+              Nhận lộ trình & Học thử
+            </button>
           </div>
         </div>
-        <div class="sm:col-span-5 rounded-[17px] bg-[#FAF6F0] text-[#3A2E25] h-[195px] sm:h-[215px] p-5 flex flex-col justify-between">
+        <div onclick="requestGiftWithLeadGate('gift_edu30')" class="sm:col-span-5 cursor-pointer rounded-[17px] bg-[#FAF6F0] text-[#3A2E25] h-[195px] sm:h-[215px] p-5 flex flex-col justify-between">
           <span class="text-[11px] uppercase tracking-widest text-[#063d5b] font-bold">Đại sứ Giáo dục</span>
           <h4 class="text-base font-bold text-[#1D2D35] leading-snug">
             Nuôi con với<br>tầm nhìn 30 năm
@@ -399,56 +398,100 @@
 
     </section>
 
-    <!-- ================= 4. FORM THU PHỄU TRỰC TIẾP (GIỐNG HỆT KHỐI "LÀM QUEN VỚI MÌNH NHÉ!" CỦA ANOTHER LINH) ================= -->
+    <!-- ================= 4. FORM THU PHỄU TRỰC TIẾP 3 TRƯỜNG BẮT BUỘC (HỌ TÊN + SĐT + EMAIL) ================= -->
     <section id="leadFormSection" class="mt-6 max-w-[620px] mx-auto">
       <div class="navy-gift-card p-6 sm:p-8 text-center">
         <h2 class="text-lg sm:text-xl font-bold text-[#FEFEFE]">
           Làm quen với mình nhé!
         </h2>
         <p class="text-xs sm:text-sm text-[#FEFEFE]/90 mt-1.5 leading-relaxed max-w-lg mx-auto">
-          Để lại thông tin của bạn, Hạnh sẽ gửi tặng ngay <strong>"Bản đồ Tái thiết 30 ngày"</strong> (File Word in thực hành) cùng các thông tin hữu ích và quà tặng định kỳ ^^
+          Để lại đầy đủ Họ tên, Số điện thoại và Email của bạn, Hạnh sẽ mở khóa ngay các món quà tặng và gửi lộ trình tái thiết định kỳ cho bạn nhé ^^
         </p>
 
-        <form id="leadMagnetForm" class="mt-5 space-y-3.5 text-left">
-          <input type="text" id="leadName" required placeholder="Tên của bạn (First Name)" class="navy-pill-input text-sm">
-          <input type="text" id="leadContact" required placeholder="Email hoặc Số điện thoại Zalo" class="navy-pill-input text-sm">
+        <form id="bottomLeadForm" class="mt-5 space-y-3.5 text-left">
+          <input type="text" id="bottomName" required placeholder="Họ và tên của bạn *" class="navy-pill-input text-sm">
+          <input type="tel" id="bottomPhone" required placeholder="Số điện thoại / Zalo của bạn *" class="navy-pill-input text-sm">
+          <input type="email" id="bottomEmail" required placeholder="Địa chỉ Email của bạn *" class="navy-pill-input text-sm">
 
           <button type="submit" class="white-pill-btn w-full py-3.5 text-sm sm:text-base font-semibold mt-1">
-            OK
+            OK &bull; Nhận Quà Tặng Ngay
           </button>
         </form>
 
-        <!-- Hộp mở khóa ngay sau khi bấm OK -->
-        <div id="unlockedLeadBox" class="hidden mt-5 p-5 rounded-[17px] border-2 border-[#FEFEFE] bg-[#5b7483]/40 text-left space-y-3">
+        <!-- Hộp mở khóa ngay sau khi điền đủ 3 thông tin -->
+        <div id="bottomUnlockedBox" class="hidden mt-5 p-5 rounded-[17px] border-2 border-[#FEFEFE] bg-[#5b7483]/40 text-left space-y-3">
           <p class="text-sm font-bold text-[#FEFEFE]">
-            🌱 Cảm ơn <span id="unlockedUserName">bạn</span>! Quà tặng của bạn đã được mở khóa:
+            🌱 Cảm ơn <span id="bottomUnlockedName">bạn</span>! Toàn bộ quà tặng đã được mở khóa cho bạn:
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <a href="14_Ban_Do_Tai_Thiet_30_Ngay_Lead_Magnet_Dau_Pheu_Beacons.docx" download
                class="white-pill-btn py-2.5 px-4 text-xs sm:text-sm text-center block font-semibold">
-              ⬇ Tải File Word (.docx)
+              ⬇ Tải Bản Đồ Tái Thiết 30 Ngày (.docx)
             </a>
-            <button type="button" onclick="openModal('modalReadMap')"
-                    class="py-2.5 px-4 rounded-[17px] border-2 border-[#FEFEFE] text-[#FEFEFE] text-xs sm:text-sm hover:bg-white/10 transition">
-              📖 Đọc Bản Đồ Trên Trang
-            </button>
+            <a href="07_Qua_Tang_Lead_Magnet_Ban_Do_Tai_San_Va_Checklist_Second_Life.docx" download
+               class="white-pill-btn py-2.5 px-4 text-xs sm:text-sm text-center block font-semibold">
+              ⬇ Tải Bản Đồ Tài Sản 4 Tầng (.docx)
+            </a>
           </div>
           <p class="text-xs text-[#FEFEFE]/90 pt-1">
-            Lời chào của bạn đã được sao chép sẵn. Bấm <a href="https://zalo.me/0911328128" target="_blank" class="underline font-bold">vào đây để mở Zalo Hạnh Nguyễn (0911.328.128)</a> nhận lộ trình 7 ngày tiếp theo nhé!
+            Hệ thống cũng đã kết nối thông tin của bạn về Zalo Hạnh Nguyễn (<a id="bottomZaloLink" href="https://zalo.me/0911328128" target="_blank" class="underline font-bold">0911.328.128</a>) để gửi chuỗi bài học 7 ngày tiếp theo!
           </p>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER LOGO -->
-    <footer class="mt-10 text-center text-xs text-[#FEFEFE]/85 space-y-1">
+    <!-- FOOTER LOGO & NÚT XEM DANH SÁCH LEAD DÀNH CHO CHỊ HẠNH -->
+    <footer class="mt-10 text-center text-xs text-[#FEFEFE]/85 space-y-2">
       <p class="font-handle text-base font-bold tracking-tight text-[#FEFEFE]">hanhsecondlife</p>
       <p>"Không giúp người ta chạy trốn khỏi cuộc đời cũ; giúp họ xây lại một cuộc đời mới có nền tảng."</p>
+      <div class="pt-3">
+        <button type="button" onclick="openModal('modalAdminLeads')" class="text-[11px] text-[#FEFEFE]/50 hover:text-[#FEFEFE] underline">
+          📋 Kho Lead đã thu trên thiết bị (<span id="leadCountBadge">0</span>)
+        </button>
+      </div>
     </footer>
 
   </main>
 
-  <!-- ================= CÁC CỬA SỔ POPUP (MODALS) TƯƠNG TÁC ================= -->
+  <!-- ================= POPUP CỔNG THU LEAD BẮT BUỘC (HỌ TÊN + SĐT + EMAIL) ================= -->
+  <div id="modalLeadGate" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 p-4 overflow-y-auto">
+    <div class="bg-[#063d5b] border-2 border-[#FEFEFE] text-[#FEFEFE] rounded-[22px] max-w-md w-full p-6 sm:p-7 shadow-2xl relative my-8">
+      <button onclick="closeModal('modalLeadGate')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="text-center">
+        <span class="inline-block px-3 py-1 rounded-full bg-[#5b7483]/50 border border-[#FEFEFE]/40 text-[11px] uppercase tracking-wider">
+          Quà tặng từ Hạnh Second Life
+        </span>
+        <h3 id="gateModalTitle" class="text-lg sm:text-xl font-bold mt-2.5 leading-snug">
+          Nhận Bản đồ Tái thiết 30 ngày
+        </h3>
+        <p class="text-xs sm:text-sm text-[#FEFEFE]/90 mt-1.5 leading-relaxed">
+          Bạn vui lòng để lại <strong>Họ tên, Số điện thoại và Email</strong> bên dưới để hệ thống mở khóa file tải về ngay lập tức nhé ^^
+        </p>
+      </div>
+
+      <form id="popupGateForm" class="mt-5 space-y-3.5">
+        <input type="hidden" id="gateGiftKey" value="gift_map30">
+        <div>
+          <input type="text" id="gateName" required placeholder="Họ và tên của bạn *" class="navy-pill-input text-sm">
+        </div>
+        <div>
+          <input type="tel" id="gatePhone" required placeholder="Số điện thoại / Zalo của bạn *" class="navy-pill-input text-sm">
+        </div>
+        <div>
+          <input type="email" id="gateEmail" required placeholder="Địa chỉ Email của bạn *" class="navy-pill-input text-sm">
+        </div>
+
+        <button type="submit" class="white-pill-btn w-full py-3.5 text-sm sm:text-base font-semibold">
+          OK &bull; Tải Quà & Xem Ngay
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= CÁC CỬA SỔ POPUP NỘI DUNG QUÀ TẶNG (CHỈ MỞ SAU KHI ĐÃ ĐIỀN LEAD) ================= -->
 
   <!-- MODAL 1: TRẮC NGHIỆM 60 GIÂY -->
   <div id="modalQuiz" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4 overflow-y-auto">
@@ -486,23 +529,24 @@
         </button>
       </form>
 
-      <div id="quizResultBox" class="hidden mt-4 p-4 rounded-[15px] border-2 border-[#FEFEFE] bg-[#5b7483]/50 space-y-2">
+      <div id="quizResultBox" class="hidden mt-4 p-4 rounded-[15px] border-2 border-[#FEFEFE] bg-[#5b7483]/50 space-y-2.5">
         <p id="quizResultTitle" class="font-bold text-sm sm:text-base"></p>
         <p id="quizResultDesc" class="text-xs sm:text-sm leading-relaxed"></p>
-        <button onclick="closeModal('modalQuiz'); scrollToLeadForm('Bản đồ Tái thiết 30 ngày');" class="white-pill-btn w-full py-2.5 text-xs font-semibold mt-2">
-          Nhận Bản Đồ Tái Thiết 30 Ngày Ngay
-        </button>
+        <a href="14_Ban_Do_Tai_Thiet_30_Ngay_Lead_Magnet_Dau_Pheu_Beacons.docx" download
+           class="white-pill-btn block text-center w-full py-2.5 text-xs font-semibold mt-2">
+          ⬇ Tải Ngay Bản Đồ Tái Thiết 30 Ngày (.docx)
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 2: ĐỌC BẢN ĐỒ TÁI THIẾT 30 NGÀY -->
+  <!-- MODAL 2: ĐỌC & TẢI BẢN ĐỒ TÁI THIẾT 30 NGÀY -->
   <div id="modalReadMap" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4 overflow-y-auto">
     <div class="bg-[#063d5b] border-2 border-[#FEFEFE] text-[#FEFEFE] rounded-[20px] max-w-xl w-full p-6 sm:p-7 shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto space-y-4">
       <button onclick="closeModal('modalReadMap')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
-      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Guidebook Thực Hành Đầu Phễu</p>
+      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Đã mở khóa quà tặng thành công</p>
       <h3 class="text-xl font-bold">Bản Đồ Tái Thiết 30 Ngày: 5 Hợp Phần Cốt Lõi</h3>
       <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
         <div class="p-3.5 rounded-[14px] bg-[#5b7483]/35 border border-[#FEFEFE]/30">
@@ -520,27 +564,27 @@
       </div>
       <a href="14_Ban_Do_Tai_Thiet_30_Ngay_Lead_Magnet_Dau_Pheu_Beacons.docx" download
          class="white-pill-btn block w-full text-center py-3 text-sm font-semibold">
-        ⬇ Tải Bản Đầy Đủ File Word (.docx) Về Máy
+        ⬇ Tải Lại File Word Bản Đồ 30 Ngày (.docx)
       </a>
     </div>
   </div>
 
-  <!-- MODAL 3: BỘ CÔNG CỤ TÁI THIẾT TÀI CHÍNH GIA ĐÌNH -->
+  <!-- MODAL 3: BẢN ĐỒ TÀI SẢN GIA ĐÌNH 4 TẦNG & CHECKLIST SECOND LIFE -->
   <div id="modalToolkit" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4 overflow-y-auto">
     <div class="bg-[#063d5b] border-2 border-[#FEFEFE] text-[#FEFEFE] rounded-[20px] max-w-lg w-full p-6 sm:p-7 shadow-2xl relative my-8 space-y-4">
       <button onclick="closeModal('modalToolkit')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
-      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Tầng 4 &bull; Bộ Công Cụ Thực Hành</p>
-      <h3 class="text-xl font-bold">Bộ Công Cụ Tái Thiết Tài Chính Gia Đình</h3>
+      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Đã mở khóa quà tặng thành công</p>
+      <h3 class="text-xl font-bold">Bản Đồ Tài Sản Gia Đình 4 Tầng & Checklist Second Life</h3>
       <ul class="space-y-2.5 text-xs sm:text-sm leading-relaxed">
-        <li>&bull; <strong>Workbook Thực hành 90 ngày:</strong> Lộ trình cầm tay chỉ việc từng tuần.</li>
-        <li>&bull; <strong>Bảng tính Dòng tiền & Tháp Phòng Thủ 4 Tầng:</strong> Phân bổ tự động ngày nhận lương.</li>
-        <li>&bull; <strong>Bản đồ Khoanh vùng & Tất toán Nợ thông minh.</strong></li>
-        <li>&bull; <strong>Video hướng dẫn chi tiết</strong> từ Hạnh Nguyễn (Thạc sĩ TCNH FTU – 10 năm NHNN).</li>
+        <li>&bull; <strong>Tháp Phòng Thủ Tài Sản 4 Tầng:</strong> Khiên thanh khoản 6–12 tháng, Tài sản chống lạm phát, Động cơ tăng trưởng thụ động & Vốn thử nghiệm.</li>
+        <li>&bull; <strong>Checklist 5 Điều Kiện Sống Còn:</strong> Bài kiểm tra bắt buộc trước khi nghỉ việc hoặc chuyển đổi sang Sự nghiệp thứ 2.</li>
+        <li>&bull; <strong>Bộ Công Cụ Chuyên Sâu 90 Ngày:</strong> Kết nối trực tiếp qua Zalo Hạnh Nguyễn để nhận hướng dẫn chi tiết.</li>
       </ul>
-      <a href="https://zalo.me/0911328128" target="_blank" class="white-pill-btn block w-full text-center py-3 text-sm font-semibold">
-        Nhắn Zalo Hạnh Nguyễn (0911.328.128) Để Nhận Bộ Công Cụ
+      <a href="07_Qua_Tang_Lead_Magnet_Ban_Do_Tai_San_Va_Checklist_Second_Life.docx" download
+         class="white-pill-btn block w-full text-center py-3 text-sm font-semibold">
+        ⬇ Tải File Word Bản Đồ 4 Tầng & Checklist (.docx)
       </a>
     </div>
   </div>
@@ -551,7 +595,7 @@
       <button onclick="closeModal('modalRebuild90')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
-      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Workshop 90 Phút & Chương Trình Nhóm Nhỏ</p>
+      <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Đã ghi nhận thông tin đăng ký của bạn</p>
       <h3 class="text-xl font-bold">Làm Lại Từ Số Âm & Rebuild 90 Ngày</h3>
       <div class="p-4 rounded-[15px] bg-[#5b7483]/35 border border-[#FEFEFE]/30 space-y-2 text-xs sm:text-sm">
         <p class="font-bold">3 Kết Quả Thực Tế Sau 90 Ngày Đồng Hành:</p>
@@ -559,8 +603,8 @@
         <p>2. Có lịch phục hồi năng lượng và hệ thống nếp nhà thực tế.</p>
         <p>3. Có một hướng thử nghiệm nghề nghiệp hoặc thu nhập mới từ chuyên môn sẵn có.</p>
       </div>
-      <a href="https://zalo.me/0911328128" target="_blank" class="white-pill-btn block w-full text-center py-3 text-sm font-semibold">
-        Đăng Ký Workshop / Tư Vấn Rebuild 90 Qua Zalo
+      <a id="rebuildZaloBtn" href="https://zalo.me/0911328128" target="_blank" class="white-pill-btn block w-full text-center py-3 text-sm font-semibold">
+        Nhắn Zalo Hạnh Nguyễn (0911.328.128) Nhận Lịch Học &rarr;
       </a>
     </div>
   </div>
@@ -595,17 +639,83 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT -->
+  <!-- MODAL 6: BẢNG QUẢN LÝ & XUẤT FILE EXCEL LEAD ĐÃ THU -->
+  <div id="modalAdminLeads" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 p-4 overflow-y-auto">
+    <div class="bg-[#063d5b] border-2 border-[#FEFEFE] text-[#FEFEFE] rounded-[20px] max-w-2xl w-full p-6 sm:p-7 shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto space-y-4">
+      <button onclick="closeModal('modalAdminLeads')" class="absolute top-4 right-4 p-1.5 rounded-full border border-[#FEFEFE]/50 hover:bg-white/10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <div class="flex flex-wrap items-center justify-between gap-2 pr-8">
+        <div>
+          <p class="text-xs uppercase tracking-widest text-[#FEFEFE]/80">Quản trị Phễu Hạnh Second Life</p>
+          <h3 class="text-lg sm:text-xl font-bold">Danh sách Lead khách hàng đã đăng ký</h3>
+        </div>
+        <button type="button" onclick="exportLeadsToCSV()" class="white-pill-btn py-2 px-4 text-xs font-semibold">
+          ⬇ Xuất File Excel (.CSV)
+        </button>
+      </div>
+
+      <div id="adminLeadsTableWrap" class="overflow-x-auto text-xs border border-[#FEFEFE]/30 rounded-[14px]">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-[#5b7483]/50 border-b border-[#FEFEFE]/30">
+              <th class="p-2.5">Thời gian</th>
+              <th class="p-2.5">Họ và tên</th>
+              <th class="p-2.5">Số điện thoại</th>
+              <th class="p-2.5">Email</th>
+              <th class="p-2.5">Món quà / Nhu cầu</th>
+            </tr>
+          </thead>
+          <tbody id="adminLeadsTbody" class="divide-y divide-[#FEFEFE]/15">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT: HỆ THỐNG CỔNG THU LEAD BẮT BUỘC 3 TRƯỜNG (HỌ TÊN + SĐT + EMAIL) -->
   <script>
     if (window.lucide) {
       window.lucide.createIcons();
     }
+
+    // Danh mục 5 món quà & hành động mở khóa tương ứng
+    const giftCatalog = {
+      'gift_map30': {
+        title: '[Guidebook] Bản đồ Tái thiết 30 ngày: Tiền & Năng lượng',
+        downloadUrl: '14_Ban_Do_Tai_Thiet_30_Ngay_Lead_Magnet_Dau_Pheu_Beacons.docx',
+        nextModal: 'modalReadMap'
+      },
+      'gift_quiz': {
+        title: '[Bài tự đánh giá] Bạn đang ở tầng nào của khủng hoảng?',
+        downloadUrl: '',
+        nextModal: 'modalQuiz'
+      },
+      'gift_toolkit4': {
+        title: '[Template & Checklist] Bản đồ Tài sản Gia đình 4 Tầng & Checklist Second Life',
+        downloadUrl: '07_Qua_Tang_Lead_Magnet_Ban_Do_Tai_San_Va_Checklist_Second_Life.docx',
+        nextModal: 'modalToolkit'
+      },
+      'gift_rebuild90': {
+        title: '[Workshop & Rebuild 90] Làm lại từ số âm trong 90 ngày',
+        downloadUrl: '14_Ban_Do_Tai_Thiet_30_Ngay_Lead_Magnet_Dau_Pheu_Beacons.docx',
+        nextModal: 'modalRebuild90'
+      },
+      'gift_edu30': {
+        title: '[Giáo dục 30 năm] Đồng hành cùng con Giỏi Ngoại ngữ – Vững Công nghệ',
+        downloadUrl: '',
+        nextModal: 'redirect_zalo_edu'
+      }
+    };
 
     function openModal(id) {
       const el = document.getElementById(id);
       if (el) {
         el.classList.remove('hidden');
         el.classList.add('flex');
+      }
+      if (id === 'modalAdminLeads') {
+        renderAdminLeadsTable();
       }
     }
 
@@ -617,69 +727,151 @@
       }
     }
 
-    function scrollToLeadForm() {
-      const sec = document.getElementById('leadFormSection');
-      if (sec) {
-        sec.scrollIntoView({ behavior: 'smooth' });
-        setTimeout(() => {
-          document.getElementById('leadName').focus();
-        }, 450);
+    // Kiểm tra và lấy danh sách Lead đã lưu
+    function getStoredLeads() {
+      try {
+        return JSON.parse(localStorage.getItem('hanhsecondlife_leads_db') || '[]');
+      } catch (e) {
+        return [];
       }
     }
 
-    // Cho phép chị Hạnh chọn ảnh bất kỳ từ máy tính để đổi ngay ảnh đầu tiên & tự động lưu lại
-    const uploadInput = document.getElementById('uploadAvatarInput');
-    const heroImg = document.getElementById('heroPortraitImg');
-    const bannerImg = document.getElementById('bannerPortraitImg');
-    const ambientBg = document.getElementById('ambientBackdrop');
+    function updateLeadCountBadge() {
+      const leads = getStoredLeads();
+      const badge = document.getElementById('leadCountBadge');
+      if (badge) badge.textContent = leads.length;
+    }
+    updateLeadCountBadge();
 
-    // Khôi phục ảnh đã chọn nếu có trong trình duyệt
-    try {
-      const savedImg = localStorage.getItem('hanh_beacons_custom_avatar');
-      if (savedImg) {
-        if (heroImg) heroImg.src = savedImg;
-        if (bannerImg) bannerImg.src = savedImg;
-        if (ambientBg) {
-          ambientBg.style.backgroundImage = `linear-gradient(180deg, rgba(135, 168, 188, 0.45) 0%, rgba(91, 116, 131, 0.55) 55%, rgba(168, 152, 138, 0.65) 100%), url('${savedImg}')`;
-        }
+    // Lưu Lead mới (Họ tên, SĐT, Email, Món quà)
+    function saveLeadRecord(name, phone, email, giftTitle) {
+      const record = {
+        name: name,
+        phone: phone,
+        email: email,
+        gift: giftTitle,
+        time: new Date().toLocaleString('vi-VN')
+      };
+      try {
+        const leads = getStoredLeads();
+        leads.unshift(record);
+        localStorage.setItem('hanhsecondlife_leads_db', JSON.stringify(leads));
+        localStorage.setItem('hanhsecondlife_current_user', JSON.stringify({ name, phone, email }));
+      } catch (e) {}
+      updateLeadCountBadge();
+
+      // Chuẩn bị sẵn tin nhắn gửi về Zalo 0911328128 của chị Hạnh
+      const zaloMsg = `Chào chị Hạnh Nguyễn (Hạnh Second Life), mình vừa đăng ký nhận quà trên Beacons:\n- Họ tên: ${name}\n- SĐT/Zalo: ${phone}\n- Email: ${email}\n- Quà nhận: ${giftTitle}`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(zaloMsg).catch(() => {});
       }
-    } catch (e) {}
+      return zaloMsg;
+    }
 
-    if (uploadInput) {
-      uploadInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          const dataUrl = evt.target.result;
-          if (heroImg) heroImg.src = dataUrl;
-          if (bannerImg) bannerImg.src = dataUrl;
-          if (ambientBg) {
-            ambientBg.style.backgroundImage = `linear-gradient(180deg, rgba(135, 168, 188, 0.45) 0%, rgba(91, 116, 131, 0.55) 55%, rgba(168, 152, 138, 0.65) 100%), url('${dataUrl}')`;
-          }
-          try {
-            localStorage.setItem('hanh_beacons_custom_avatar', dataUrl);
-          } catch (err) {}
-        };
-        reader.readAsDataURL(file);
+    // Luôn yêu cầu điền Họ tên + SĐT + Email khi bấm vào bất kỳ món quà nào
+    function requestGiftWithLeadGate(giftKey) {
+      const gift = giftCatalog[giftKey] || giftCatalog['gift_map30'];
+      document.getElementById('gateGiftKey').value = giftKey;
+      document.getElementById('gateModalTitle').textContent = 'Nhận quà: ' + gift.title;
+
+      // Tự động điền sẵn nếu khách vừa nhập trước đó để tiện xác nhận
+      try {
+        const savedUser = JSON.parse(localStorage.getItem('hanhsecondlife_current_user') || 'null');
+        if (savedUser) {
+          if (savedUser.name) document.getElementById('gateName').value = savedUser.name;
+          if (savedUser.phone) document.getElementById('gatePhone').value = savedUser.phone;
+          if (savedUser.email) document.getElementById('gateEmail').value = savedUser.email;
+        }
+      } catch (e) {}
+
+      openModal('modalLeadGate');
+      setTimeout(() => {
+        document.getElementById('gateName').focus();
+      }, 150);
+    }
+
+    // Hàm kích hoạt tải file tự động sau khi điền đủ 3 thông tin
+    function triggerFileDownload(fileUrl) {
+      if (!fileUrl) return;
+      const a = document.createElement('a');
+      a.href = fileUrl;
+      a.setAttribute('download', '');
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // Xử lý khi khách bấm OK trên Popup Cổng Thu Lead
+    const popupGateForm = document.getElementById('popupGateForm');
+    if (popupGateForm) {
+      popupGateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const giftKey = document.getElementById('gateGiftKey').value;
+        const name = document.getElementById('gateName').value.trim();
+        const phone = document.getElementById('gatePhone').value.trim();
+        const email = document.getElementById('gateEmail').value.trim();
+
+        const phoneDigits = phone.replace(/\D/g, '');
+        if (phoneDigits.length < 9 || phoneDigits.length > 11) {
+          alert('Bạn vui lòng nhập đúng Số điện thoại (9 - 11 chữ số) để nhận quà nhé!');
+          document.getElementById('gatePhone').focus();
+          return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+          alert('Bạn vui lòng nhập đúng địa chỉ Email để nhận tài liệu nhé!');
+          document.getElementById('gateEmail').focus();
+          return;
+        }
+
+        const gift = giftCatalog[giftKey] || giftCatalog['gift_map30'];
+        const zaloMsg = saveLeadRecord(name, phone, email, gift.title);
+        const encodedMsg = encodeURIComponent(zaloMsg);
+        const zaloUrl = `https://zalo.me/0911328128?text=${encodedMsg}`;
+
+        closeModal('modalLeadGate');
+
+        // Tự động tải file quà tặng về máy ngay lập tức
+        if (gift.downloadUrl) {
+          triggerFileDownload(gift.downloadUrl);
+        }
+
+        // Mở nội dung chi tiết hoặc chuyển sang Zalo tư vấn
+        if (gift.nextModal === 'redirect_zalo_edu') {
+          window.open(zaloUrl, '_blank');
+        } else if (gift.nextModal) {
+          const rebuildBtn = document.getElementById('rebuildZaloBtn');
+          if (rebuildBtn) rebuildBtn.href = zaloUrl;
+          openModal(gift.nextModal);
+        }
       });
     }
 
-    // Xử lý Form nhận quà
-    const leadForm = document.getElementById('leadMagnetForm');
-    if (leadForm) {
-      leadForm.addEventListener('submit', (e) => {
+    // Xử lý Form 3 trường ở cuối trang ("Làm quen với mình nhé!")
+    const bottomLeadForm = document.getElementById('bottomLeadForm');
+    if (bottomLeadForm) {
+      bottomLeadForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const name = document.getElementById('leadName').value.trim();
-        const contact = document.getElementById('leadContact').value.trim();
+        const name = document.getElementById('bottomName').value.trim();
+        const phone = document.getElementById('bottomPhone').value.trim();
+        const email = document.getElementById('bottomEmail').value.trim();
 
-        document.getElementById('unlockedUserName').textContent = name || 'bạn';
-        document.getElementById('unlockedLeadBox').classList.remove('hidden');
-
-        const msg = `Chào chị Hạnh Nguyễn (Hạnh Second Life), mình là ${name} (${contact}). Mình vừa đăng ký nhận "Bản đồ Tái thiết 30 ngày" trên Beacons.`;
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(msg).catch(() => {});
+        const phoneDigits = phone.replace(/\D/g, '');
+        if (phoneDigits.length < 9 || phoneDigits.length > 11) {
+          alert('Bạn vui lòng nhập đúng Số điện thoại (9 - 11 chữ số) nhé!');
+          document.getElementById('bottomPhone').focus();
+          return;
         }
+
+        const zaloMsg = saveLeadRecord(name, phone, email, 'Đăng ký nhận trọn bộ quà tặng ở cuối trang');
+        const encodedMsg = encodeURIComponent(zaloMsg);
+        const zaloUrl = `https://zalo.me/0911328128?text=${encodedMsg}`;
+
+        document.getElementById('bottomUnlockedName').textContent = name;
+        document.getElementById('bottomZaloLink').href = zaloUrl;
+        document.getElementById('bottomUnlockedBox').classList.remove('hidden');
+
+        // Tự động tải luôn Bản đồ Tái thiết 30 ngày cho khách
+        triggerFileDownload('14_Ban_Do_Tai_Thiet_30_Ngay_Lead_Magnet_Dau_Pheu_Beacons.docx');
       });
     }
 
@@ -699,16 +891,60 @@
 
         if (total >= 7) {
           titleEl.textContent = 'KẾT QUẢ: TẦNG 1 — CẤP CỨU DÒNG TIỀN & HỒI SỨC TÂM TRÍ (' + total + '/9 điểm)';
-          descEl.textContent = 'Bạn đang ở giai đoạn áp lực cao nhất (giống Hạnh năm 34–35 tuổi). Lúc này tuyệt đối KHÔNG vay mới hay đầu tư gỡ gạc. Hãy nhận ngay "Bản đồ Tái thiết 30 ngày" bên dưới để cầm máu dòng tiền và thực hiện 4 điểm neo phục hồi năng lượng trước tiên!';
+          descEl.textContent = 'Bạn đang ở giai đoạn áp lực cao nhất (giống Hạnh năm 34–35 tuổi). Lúc này tuyệt đối KHÔNG vay mới hay đầu tư gỡ gạc. Hãy tải ngay "Bản đồ Tái thiết 30 ngày" bên dưới để cầm máu dòng tiền và thực hiện 4 điểm neo phục hồi năng lượng trước tiên!';
         } else if (total >= 5) {
           titleEl.textContent = 'KẾT QUẢ: TẦNG 2 — TÁI CẤU TRÚC TÀI CHÍNH & NẾP NHÀ (' + total + '/9 điểm)';
-          descEl.textContent = 'Bạn đã qua cơn sốc đầu tiên nhưng nền móng phòng thủ của gia đình còn mỏng. Bước đi phù hợp nhất là áp dụng "Bộ công cụ Tái thiết Tài chính Gia đình" và tham gia Workshop "Làm lại từ số âm" để xây Tháp phòng thủ 4 tầng.';
+          descEl.textContent = 'Bạn đã qua cơn sốc đầu tiên nhưng nền móng phòng thủ của gia đình còn mỏng. Bước đi phù hợp nhất là áp dụng "Bản đồ Tài sản Gia đình 4 Tầng" và tham gia Workshop "Làm lại từ số âm".';
         } else {
           titleEl.textContent = 'KẾT QUẢ: TẦNG 3 — SẴN SÀNG XÂY SỰ NGHIỆP THỨ 2 & TÀI SẢN SỐ (' + total + '/9 điểm)';
           descEl.textContent = 'Nền tảng phòng thủ của bạn khá tốt! Đây là lúc bạn có thể xây "Cây cầu chuyển đổi", đóng gói chuyên môn 10 năm đi làm thành nguồn thu nhập độc lập cùng chương trình "Rebuild 90 — Tái thiết cuộc đời trong 90 ngày".';
         }
         box.classList.remove('hidden');
       });
+    }
+
+    // Hiển thị bảng Lead & xuất CSV
+    function renderAdminLeadsTable() {
+      const leads = getStoredLeads();
+      const tbody = document.getElementById('adminLeadsTbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      if (leads.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-[#FEFEFE]/70">Chưa có dữ liệu đăng ký nào trên thiết bị này.</td></tr>';
+        return;
+      }
+      leads.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="p-2.5 whitespace-nowrap">${item.time || ''}</td>
+          <td class="p-2.5 font-semibold">${item.name || ''}</td>
+          <td class="p-2.5">${item.phone || ''}</td>
+          <td class="p-2.5">${item.email || ''}</td>
+          <td class="p-2.5">${item.gift || ''}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function exportLeadsToCSV() {
+      const leads = getStoredLeads();
+      if (leads.length === 0) {
+        alert('Chưa có dữ liệu Lead để xuất!');
+        return;
+      }
+      let csv = '\uFEFFThời gian,Họ và tên,Số điện thoại,Email,Món quà đăng ký\n';
+      leads.forEach(r => {
+        const clean = (s) => '"' + String(s || '').replace(/"/g, '""') + '"';
+        csv += [clean(r.time), clean(r.name), clean(r.phone), clean(r.email), clean(r.gift)].join(',') + '\n';
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Danh_Sach_Lead_Hanh_Second_Life.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   </script>
 </body>
